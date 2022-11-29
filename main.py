@@ -38,7 +38,7 @@ def merge(arr, left, right, middle):
     k = left 
  
     while i < x and j < y:
-        if leftarr[i] <= rightarr[j]:
+        if cmp(leftarr[i],rightarr[i]) == 1:
             arr[k] = leftarr[i]
             i += 1
         else:
@@ -74,13 +74,13 @@ pvt = arr[0]
     high = arr[len(arr)-1]
 
     while True:
-        while low <= high and cmp(array[high], pivot):
+        while cmp(low,high) == 1 and cmp(array[high], pivot) == -1:
             high = high - 1
 
-        while low <= high and not cmp(array[low], pivot):
+        while cmp(low,high) == 1 and cmp(array[low], pivot) == 1:
             low = low + 1
 
-        if low <= high:
+        if cmp(low,high) == 1:
             array[low], array[high] = array[high], array[low]
         else:
             break
@@ -90,8 +90,8 @@ pvt = arr[0]
     return high
 
 # must be in-place sort
-def quick_sort(arr,cmp(arr[0],arr[len(arr)-1])):
-    p = partition(array, start, end, compare_func)
-    quick_sort(arr, arr[0], p-1, cmp(arr[0],arr[len(arr)-1]))
-    quick_sort(arr, p+1, arr[len(arr)-1], cmp(arr[0],arr[len(arr)-1]))
+def quick_sort(arr, start, end, cmp(arr[0],arr[len(arr)-1])):
+    p = partition(array, cmp)
+    quick_sort(arr, start, p-1, cmp(arr[0],arr[len(arr)-1]))
+    quick_sort(arr, p+1, end, cmp(arr[0],arr[len(arr)-1]))
     pass
